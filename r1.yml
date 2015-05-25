@@ -1,0 +1,8 @@
+---
+- name: Prepare R1
+  hosts: all
+  user: vagrant
+  sudo: yes
+  gather_facts: yes
+  roles:
+    - quagga

@@ -1,0 +1,34 @@
+hostname BGP
+
+log file /var/log/quagga/bgpd.log
+log monitor
+log stdout
+log syslog
+#
+password Quagga
+enable password Quagga
+
+bgp multiple-instance
+
+router bgp 111
+bgp router-id 1.1.1.1
+bgp log-neighbor-changes
+network 1.1.1.0 mask 255.255.255.0
+neighbor 192.168.12.12 remote-as 121
+
+#redistribute babel
+# redistribute connected
+#redistribute isis
+# redistribute kernel
+#redistribute ospf
+#redistribute rip
+# redistribute static
+
+#address-family ipv4 unicast
+#network 0.0.0.0/1 backdoor pathlimit 255
+#network 128.0.0.0/2 backdoor pathlimit 255
+#network 192.0.0.0/3 backdoor pathlimit 255
+#exit-address-family
+
+#neighbor AS_TRANS activate
+#exit-address-family

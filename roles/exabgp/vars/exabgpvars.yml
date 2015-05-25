@@ -1,0 +1,4 @@
+# exabgpvars.yml
+---
+exabgp_config_dir: /home/vagrant/exabgp/
+python_location: /usr/bin/python

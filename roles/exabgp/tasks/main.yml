@@ -1,0 +1,23 @@
+---
+  - include_vars: exabgpvars.yml
+
+  - name: Install Pip
+    apt: name=python-pip state=present update_cache=yes
+
+  - name: Install ExaBGP
+    pip: name=exabgp
+
+  - name: Create config directory
+    file: path={{ exabgp_config_dir }} state=directory
+
+  - name: Create config file
+    template: src=conf.ini.j2 dest={{ exabgp_config_dir }}conf.ini
+
+  - name: Create environment file
+    template: src=exabgp.env.j2 dest={{ exabgp_config_dir }}exabgp.env
+
+  - name: Create python script
+    template: src=advroutes.py.j2 dest={{ exabgp_config_dir }}advroutes.py
+
+  - name: Display run command
+    debug: msg="CD to {{ exabgp_config_dir }} then run exabgp ./conf.ini -e ./exabgp.env"

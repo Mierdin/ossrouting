@@ -1,0 +1,6 @@
+---
+- name: Prepare R3
+  hosts: all
+  user: vagrant
+  sudo: yes
+  gather_facts: yes
