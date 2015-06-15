@@ -1,9 +1,18 @@
-group test {
+group BGProuters {
     router-id 2.2.2.2;
     neighbor 192.168.12.11 {
         local-address 192.168.12.12;
         local-as 121;
         peer-as 111;
+        graceful-restart;
+        process announce-routes {
+            run {{ python_location }} {{ exabgp_config_dir }}advroutes.py;
+        }
+    }
+    neighbor 192.168.23.13 {
+        local-address 192.168.23.12;
+        local-as 121;
+        peer-as 131;
         graceful-restart;
         process announce-routes {
             run {{ python_location }} {{ exabgp_config_dir }}advroutes.py;

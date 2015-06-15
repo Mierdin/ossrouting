@@ -15,6 +15,11 @@ bgp router-id 1.1.1.1
 bgp log-neighbor-changes
 network 1.1.1.0 mask 255.255.255.0
 neighbor 192.168.12.12 remote-as 121
+neighbor 192.168.12.12 next-hop-self
+neighbor 192.168.12.12 soft-reconfiguration inbound
+neighbor 192.168.31.13 remote-as 131
+neighbor 192.168.31.13 next-hop-self
+neighbor 192.168.31.13 soft-reconfiguration inbound
 
 #redistribute babel
 # redistribute connected

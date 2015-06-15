@@ -1,0 +1,29 @@
+---
+  - include_vars: birdvars.yml
+
+  - name: Install BIRD PPA
+    apt_repository: repo={{ bird_ppa }}
+
+  - name: Install Bird
+    apt: name=bird state=present update_cache=yes
+
+  # - name: Create config directory
+  #   file: path={{ bird_config_dir }} state=directory
+
+  - name: Create config file
+    template: src=bird.conf.j2 dest={{ bird_config_dir }}bird.conf
+    notify:
+    - restart bird
+
+  # - name: Create environment file
+  #   template: src=exabgp.env.j2 dest={{ exabgp_config_dir }}exabgp.env
+  #   notify:
+  #   - restart bird
+
+  # - name: Create python script
+  #   template: src=advroutes.py.j2 dest={{ exabgp_config_dir }}advroutes.py
+  #   notify:
+  #   - restart bird
+
+  # - name: Display run command
+  #   debug: msg="CD to {{ exabgp_config_dir }} then run exabgp ./conf.ini -e ./exabgp.env"

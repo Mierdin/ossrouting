@@ -32,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                          ip: "192.168.12.12",
                          virtualbox__intnet: "01-to-02"
     r2.vm.network "private_network",
-                         ip: "123.123.123.10",
+                         ip: "2.2.2.10",
                          virtualbox__intnet: "Network to Advertise"
     r2.vm.provision "ansible" do |ansible|
       ansible.playbook = "r2.yml"
@@ -47,6 +47,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     r3.vm.network "private_network",
                          ip: "192.168.23.13",
                          virtualbox__intnet: "02-to-03"
+    r3.vm.network "private_network",
+                         ip: "3.3.3.10",
+                         virtualbox__intnet: "Network to Advertise"
     r3.vm.provision "ansible" do |ansible|
       ansible.playbook = "r3.yml"
     end                     

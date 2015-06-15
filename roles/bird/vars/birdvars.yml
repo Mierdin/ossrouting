@@ -1,0 +1,4 @@
+# birdvars.yml
+---
+bird_config_dir: /etc/bird/
+bird_ppa: "ppa:cz.nic-labs/bird"
